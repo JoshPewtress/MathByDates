@@ -3,6 +3,23 @@ public static class DateHelper
 {
     private static readonly int _daysToAdd = Random.Shared.Next(20, 51);
 
+    public static void RunProgram()
+    {
+        Console.WriteLine($"The Target Number of days is: {_daysToAdd} days.");
+        DateOnly firstDate = ParseInputToDateOnly(GetUserInput(true), true);
+        DateOnly secondDate = ParseInputToDateOnly(GetUserInput(false), false);
+
+        int userGuess = SumTotalDays(firstDate, secondDate);
+        DetermineResult(_daysToAdd, userGuess);
+    }
+
+    private static void DetermineResult(int daysToAdd, int userGuess)
+    {
+        string result = Math.Abs(userGuess - daysToAdd) <= 5 ? "You Won!" : "You Lost!";
+
+        Console.WriteLine($"{result} The Target was: {_daysToAdd} days. Your Guess was: {userGuess} days.");
+    }
+
     private static string GetUserInput(bool first)
     {
         Console.Write($"Enter the {(first ? "first" : "second")} date (MM/DD/YY): ");
