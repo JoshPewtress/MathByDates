@@ -1,1 +1,3 @@
-﻿
+﻿using MathByDates;
+
+DateHelper.RunProgram();
